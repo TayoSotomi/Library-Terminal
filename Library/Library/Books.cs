@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    internal class Books
+    public class Books
     {
         //properties
         public string Title { get; set; }
