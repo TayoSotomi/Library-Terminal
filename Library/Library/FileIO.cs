@@ -16,7 +16,7 @@ namespace Library
             if (!File.Exists(filePath))
             {
                 StreamWriter tempWriter = new StreamWriter(filePath);
-                tempWriter.WriteLine(("Burnt|Burnt|Burnt|false|DateTime.Now"));
+                tempWriter.WriteLine("Burnt|Burnt|Burnt|false|1/26/2023 2:20:05 PM");
                 tempWriter.Close();
             }
         }
