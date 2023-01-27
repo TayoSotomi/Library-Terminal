@@ -69,5 +69,22 @@ namespace Library
 
         }
 
+        //Return Books
+        public static List<Books> ReturnBook(List<Book> list)
+        {
+            list<Books> CheckedOutBooks = new List<Books>();
+            foreach(Books book in list)
+            {
+                if(Status == true)
+                {
+                    CheckedOutBooks.Add(book);
+
+                }
+            }
+            return CheckedOutBooks;
+        }
+
+
+        //
     }
 }

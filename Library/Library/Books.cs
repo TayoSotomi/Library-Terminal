@@ -1,4 +1,6 @@
-﻿namespace Library
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Library
 {
   public class Books
   {
@@ -39,10 +41,6 @@
       return x; //returned variable will be called date count and an int
     }
 
-    public bool GetStatus()
-    {
-      return Status;
-    }
     public static int GetRandomEditMinMax(int x, int min, int max)
     {
       Random r = new Random();
@@ -77,7 +75,9 @@
         return "Not Available";
 
       }
-    }
+
+     
+        
   }
 }
 
