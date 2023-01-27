@@ -12,13 +12,6 @@ foreach (Books book in listBooks)
     i++;
 }
 
-List<Books> test = SwitchMethod.AuthorFinder(listBooks);
-foreach (Books book in test)
-{
-    Console.WriteLine(book.Title);
-}
-
-Console.WriteLine(SwitchMethod.NumberFinder(listBooks));
 
 
 
