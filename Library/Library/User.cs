@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public abstract class User
+    public class User
     {
         //Properties
         public string UserName { get; set; }
-        private string Password { get; set; }
-        public List<Books> Books { get; set; }
+        public string Password { get; set; }
+        public string CheckedOutBooks { get; set; }
         //Constuctor
 
-        public User(string _username, string _password)
+        public User(string _username, string _password, string _checkedOutBooks)
         {
             UserName = _username;
             Password = _password;
+            CheckedOutBooks = _checkedOutBooks;
         }
         
         //Methods
-        public abstract void ViewBooks(Books book);
-        public abstract void CheckoutBooks(Books book);
-        public abstract void ReturnBooks(Books book);
+        //public void ViewBooks(Books book);
+        //public void CheckoutBooks(Books book);
+        //public void ReturnBooks(Books book);
 
 
 

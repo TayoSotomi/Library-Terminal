@@ -1,75 +1,87 @@
 ﻿using Circle;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library
 {
-    public class SwitchMethod
+  public class SwitchMethod
+  {
+    //Method
+    //Search by author
+    public static List<Books> AuthorFinder(List<Books> Booklist)
     {
-        //Method
-        //Search by author
-        public static List<Books> AuthorFinder(List<Books> Booklist)
-        {
-            List<Books> BooksbyAuthor = new List<Books>();
-            Console.WriteLine("Please enter an authors name:");
-            string result = Console.ReadLine().ToLower().Trim();
+      List<Books> BooksbyAuthor = new List<Books>();
+      Console.WriteLine("Please enter an authors name:");
+      string result = Console.ReadLine().ToLower().Trim();
 
-            foreach(Books book in Booklist)
+      foreach (Books book in Booklist)
+      {
+        if (book.Author.ToLower().Contains(result))
+        {
+          BooksbyAuthor.Add(book);
+        }
+      }
+      return BooksbyAuthor;
+    }
+    //Bykeyword
+    public static List<Books> KeyWordFinder(List<Books> Booklist)
+    {
+      List<Books> BooksbyKeyword = new List<Books>();
+      Console.WriteLine("Please enter a title name:");
+      string result = Console.ReadLine().ToLower().Trim();
+
+      foreach (Books book in Booklist)
+      {
+        if (book.Title.ToLower().Contains(result))
+        {
+          BooksbyKeyword.Add(book);
+        }
+      }
+      return BooksbyKeyword;
+    }
+    //Catergory
+    public static List<Books> CategoryFinder(List<Books> Booklist)
+    {
+      List<Books> BooksbyCatergory = new List<Books>();
+      Console.WriteLine("Please enter a category name:");
+      string result = Console.ReadLine().ToLower().Trim();
+
+      foreach (Books book in Booklist)
+      {
+        if (book.Category.ToLower().Contains(result))
+        {
+          BooksbyCatergory.Add(book);
+        }
+      }
+      return BooksbyCatergory;
+    }
+    public static int NumberFinder(List<Books> Booklist)
+    {
+      int result = Validator.intValidator(Booklist);
+      return result; 
+    }
+        //Return Books
+        public static List<Books> ReturnBook(List<Books> list)
+        {
+            List<Books> CheckedOutBooks = new List<Books>();
+            foreach (Books book in list)
             {
-                if(book.Author.ToLower().Contains(result))
+                if (book.Status == true)
                 {
-                    BooksbyAuthor.Add(book);
+                    CheckedOutBooks.Add(book);
+
                 }
             }
-            return BooksbyAuthor;
+            return CheckedOutBooks;
         }
-        //Bykeyword
-        public static List<Books> KeyWordFinder(List<Books> Booklist)
-        {
-            List<Books> BooksbyKeyword = new List<Books>();
-            Console.WriteLine("Please enter a title name:");
-            string result = Console.ReadLine().ToLower().Trim();
 
-            foreach (Books book in Booklist)
+
+        //Change Status
+        public static List<Books> ChangeStatus(List<Books> CheckedOutBooks)
+        {
+            foreach (Books book in CheckedOutBooks)
             {
-                if (book.Title.ToLower().Contains(result))
-                {
-                    BooksbyKeyword.Add(book);
-                }
+                book.Status = false;
             }
-            return BooksbyKeyword;
+            return CheckedOutBooks;
         }
-        //Catergory
-        public static List<Books> CategoryFinder(List<Books> Booklist)
-        {
-            List<Books> BooksbyCatergory = new List<Books>();
-            Console.WriteLine("Please enter a category name:");
-            string result = Console.ReadLine().ToLower().Trim();
-
-            foreach (Books book in Booklist)
-            {
-                if (book.Category.ToLower().Contains(result))
-                {
-                    BooksbyCatergory.Add(book);
-                }
-            }
-            return BooksbyCatergory;
-        }
-
-    //byNumber
-        public static string NumberFinder(List<Books> Booklist)
-        {
-            int result = Validator.intValidator(Booklist);
-
-            int x = Booklist[result].Title;
-
-            return x;
-
-        }
-
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Library
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Library
 {
   public class Books
   {
@@ -23,11 +25,11 @@
     {
       return ($"{Title}|{Author}|{Category}|{Status}|{Due}");
     }
-    public DateTime GetDueDate(DateTime checkOutDate)
+    public static DateTime GetDueDate(DateTime checkOutDate)
     {
       DateTime check = checkOutDate;
       DateTime dueDate = checkOutDate.AddDays(13);
-      return Due;
+      return dueDate;
     }
     public double GetDateCount(DateTime dueDate, DateTime checkOutDate)
     {
@@ -39,16 +41,13 @@
       return x; //returned variable will be called date count and an int
     }
 
-    public bool GetStatus()
-    {
-      return Status;
-    }
     public static int GetRandomEditMinMax(int x, int min, int max)
     {
       Random r = new Random();
       return r.Next(min, max);
     }
-    public string PickName()
+
+    public static string PickName()
     {
       int random = Books.GetRandomEditMinMax(1, 1, 6);
       string name = "";
@@ -66,20 +65,34 @@
       }
       return name;
     }
-    public string IsAvailable()
-    {
-      if (Status==true)
-      {
-        return "Available";
-      }
-      else
-      {
-        return "Not Available";
 
+    public static string RandomBook(List<Books> Booklist)
+    {
+      int i = 1;
+      int random = Books.GetRandomEditMinMax(1, 1, Booklist.Count);
+
+      if (random >= 1 || random <= 26)
+      {
+        
+        i++;
       }
+      return $"{i}. {Booklist[random].Title}, {Booklist[random].Author}, {Booklist[random].Category}, {Booklist[random].IsAvailable()}";
+    }
+      public string IsAvailable()
+      {
+        if (Status == true)
+        {
+          return "Available";
+        }
+        else
+        {
+          return "Not Available";
+        }
+      }
+
     }
   }
-}
+
 
 
 

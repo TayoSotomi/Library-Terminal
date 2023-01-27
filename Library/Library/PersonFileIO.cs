@@ -14,21 +14,22 @@ namespace Library
         public static void PersonFileVerifier()
         {
 
-            if (!File.Exists("../../../Person.txt"))
+            if (!File.Exists("../../../User.txt"))
             {
-                StreamWriter tempWriter = new StreamWriter("../../../Person.txt");
-                tempWriter.WriteLine("Burnt|Burnt|Burnt|false|1/26/2023 2:20:05 PM");
+                StreamWriter tempWriter = new StreamWriter("../../../User.txt");
+                tempWriter.WriteLine("Burnt|Burnt|Burnt");
                 tempWriter.Close();
             }
         }
-        public static List<Books> PersonFileReader()
+        public static List<User> PersonFileReader()
         {
-            List<Books> listBooks = new List<Books>();
-            StreamReader libraryCatalogueReader = new StreamReader("../../../Person.txt");
+            List<User> listUser = new List<User>();
+            List<string> listBooks = new List<string>();
+            StreamReader UserReader = new StreamReader("../../../User.txt");
 
             while (true)
             {
-                string line = libraryCatalogueReader.ReadLine();
+                string line = UserReader.ReadLine();
                 if (line == null)
                 {
                     break;
@@ -36,24 +37,28 @@ namespace Library
                 else
                 {
                     string[] parts = line.Split("|");
-                    if (parts.Length < 4)
+                    if(parts.Length <3 ) 
                     {
                         break;
                     }
-                    Books book = new Books(parts[0], parts[1], parts[2], bool.Parse(parts[3]), DateTime.Parse(parts[4]));
-                    listBooks.Add(book);
+                    User user = new User(parts[0], parts[1], parts[2]);
+                    listUser.Add(user);
                 }
             }
-            libraryCatalogueReader.Close();
+            UserReader.Close();
 
-            return listBooks;
+            return listUser;
         }
-        public static void fileWriter(List<Books> books)
+        public static void fileWriter(List<User> User, List<Books> CheckedOutBooks)
         {
-            StreamWriter writer = new StreamWriter("../../../Person.txt");
-            foreach (Books b in books)
+            StreamWriter writer = new StreamWriter("../../../User.txt");
+            foreach (User u in User)
             {
-                writer.WriteLine($"{b.Title}|{b.Author}|{b.Category}|{b.Status}|{b.Due}");
+                writer.WriteLine($"{u.UserName}|{u.Password}|");
+                foreach(Books book in CheckedOutBooks)
+                {
+                    writer.Write($"{book.Title}%");
+                }
             }
             writer.Close();
         }
