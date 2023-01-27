@@ -59,11 +59,13 @@ namespace Library
             }
             return BooksbyCatergory;
         }
+
+    //byNumber
         public static string NumberFinder(List<Books> Booklist)
         {
             int result = Validator.intValidator(Booklist);
 
-            string x = Booklist[result].Title;
+            int x = Booklist[result].Title;
 
             return x;
 
