@@ -58,6 +58,31 @@ namespace Library
       int result = Validator.intValidator(Booklist);
       return result;
 
+        //Return Books
+        public static List<Books> ReturnBook(List<Book> list)
+        {
+            list<Books> CheckedOutBooks = new List<Books>();
+            foreach(Books book in list)
+            {
+                if(Status == true)
+                {
+                    CheckedOutBooks.Add(book);
+
+                }
+            }
+            return CheckedOutBooks;
+        }
+
+
+        //Change Status
+        public static bool ChangeStatus(List<Book> CheckedOutBooks)
+        {
+            foreach(Books book in CheckedOutBooks)
+            {
+                book.Status = false;
+            }
+            return ChangeStatus
+        }
     }
 
   }
