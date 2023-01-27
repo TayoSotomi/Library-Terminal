@@ -85,6 +85,14 @@ namespace Library
         }
 
 
-        //
+        //Change Status
+        public static bool ChangeStatus(List<Book> CheckedOutBooks)
+        {
+            foreach(Books book in CheckedOutBooks)
+            {
+                book.Status = false;
+            }
+            return ChangeStatus
+        }
     }
 }
