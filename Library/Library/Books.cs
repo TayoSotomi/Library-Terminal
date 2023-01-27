@@ -1,69 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Library
+﻿namespace Library
 {
-    public class Books
+  public class Books
+  {
+    //properties
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public string Category { get; set; }
+    public bool Status { get; set; }
+    public DateTime Due { get; set; }
+
+    //constructors
+    public Books(string _title, string _author, string _category, bool _status, DateTime _due)
     {
-        //properties
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string Category { get; set; }
-        public bool Status { get; set; }
-        public DateTime Due { get; set; }
+      Title = _title;
+      Author = _author;
+      Category = _category;
+      Status = _status;
+      Due = _due;
+    }
+    //method
+    public string GetInfo()
+    {
+      return ($"{Title}|{Author}|{Category}|{Status}|{Due}");
+    }
+    public DateTime GetDueDate(DateTime checkOutDate)
+    {
+      DateTime check = checkOutDate;
+      DateTime dueDate = checkOutDate.AddDays(13);
+      return Due;
+    }
+    public double GetDateCount(DateTime dueDate, DateTime checkOutDate)
+    {
+      DateTime due = dueDate;
+      DateTime check = checkOutDate;
+      dueDate.Subtract(checkOutDate);
+      var c = due.Subtract(check);
+      double x = c.Days;
+      return x; //returned variable will be called date count and an int
+    }
 
-        //constructors
-        public Books(string _title, string _author, string _category, bool _status, DateTime _due)
+        public string GetStatus(bool status)
         {
-            Title = _title;
-            Author = _author;
-            Category = _category;
-            Status = _status;
-            Due = _due;
-        }
-        //method
-        public string GetInfo()
-        {
-            return ($"{Title}|{Author}|{Category}|{Status}|{Due}");
-        }
-        public DateTime GetDueDate(DateTime receivedDatedTime)
-        {
-            DateTime checkOutDate = receivedDatedTime;
-            DateTime dueDate = checkOutDate.AddDays(13);
-            return dueDate;
-        }
-
-        public string GetStatus(bool Status)
-        {
-            if (Status == false)
+            if (status == true)
             {
-                return $"{Title} is not Available";
-
+                return "Available";
             }
-            else if(Status == true)
+            else
             {
-                return $"{Title} is not available";
+                return "Not Available";
             }
-            return " ";
         }
-        
-
-        
-        
-
-
     }
 }
 
 
-      
 
-      
-        
-    
 
-    
+
+
+
+
+
 
