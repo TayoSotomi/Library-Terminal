@@ -48,6 +48,36 @@
       Random r = new Random();
       return r.Next(min, max);
     }
+    public string PickName()
+    {
+      int random = Books.GetRandomEditMinMax(1, 1, 6);
+      string name = "";
+      if (random == 1 || random == 6)
+      {
+        name = "Agustus";
+      }
+      else if (random == 2 || random == 4)
+      {
+        name = "Octavio";
+      }
+      else if (random == 3 || random == 5)
+      {
+        name = "Caesarion";
+      }
+      return name;
+    }
+    public string IsAvailable(bool status)
+    {
+      if (status)
+      {
+        return "Available";
+      }
+      else
+      {
+        return "Not Available";
+
+      }
+    }
   }
 }
 
