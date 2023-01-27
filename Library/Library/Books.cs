@@ -66,9 +66,9 @@
       }
       return name;
     }
-    public string IsAvailable(bool status)
+    public string IsAvailable()
     {
-      if (status)
+      if (Status==true)
       {
         return "Available";
       }

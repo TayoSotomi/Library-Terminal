@@ -1,17 +1,17 @@
 The Giving Tree|Shel SilverStein|Childrens|True|1/26/2023 2:20:05 PM
-The Big Book of Kombucha|Hannah Crum & Alex LaGory|Cookbook|True|1/26/2023 2:20:05 PM
+The Big Book of Kombucha|Hannah Crum & Alex|Cookbook|True|1/26/2023 2:20:05 PM
 The 7 Habits of Highly Effective People|Stephen R. Covey|Self Help|True|1/26/2023 2:20:05 PM
 Storeys Guide to Raising Chickens|Gail Damerow|Agriculture|True|1/26/2023 2:20:05 PM
 Salt Fat Acid Heat|Samin Nosrat|Cookbook|True|1/26/2023 2:20:05 PM
-Permaculture: Principles and Pathways Beyond Sustainability|David Holmgren|Agriculture|True|1/26/2023 2:20:05 PM
-Capital: A Critique of Political Economy, Vol. 1|Karl Marx|Political Science|True|1/26/2023 2:20:05 PM
-Shantaram|Gregory David Roberts|Fiction|True|1/26/2023 2:20:05 PM
-Dirk Gently�s Holistic Detective Agency|Douglas Adams|Science Fiction|True|1/26/2023 2:20:05 PM
+Principles and Pathways|David Holmgren|Agriculture|True|1/26/2023 2:20:05 PM
+Critique of Political Economy,Vol.1|Karl Marx|Poli Science|True|1/26/2023 2:20:05 PM
+Shantaram|Gregory David|Fiction|True|1/26/2023 2:20:05 PM
+Dirk Gently�s Holistic Detective Agency|Douglas Adams|Sci-Fi|True|1/26/2023 2:20:05 PM
 Everyone You Hate Is Going to Die|Daniel Sloss|Self Help|True|1/26/2023 2:20:05 PM
 The Motorcycle Diaries|Che Guevara|Memior|True|1/26/2023 2:20:05 PM
-Half of a Yello Sun|Chimamanda Ngozi Adichie|Fiction|True|1/26/2023 2:20:05 PM
+Half of a Yello Sun|Chimamanda Adichie|Fiction|True|1/26/2023 2:20:05 PM
 Right Under Our Nose|R. Giridharan|Thriller|True|1/26/2023 2:20:05 PM
-Making of a General-A Himalayan Echo|Lt. Gen. Konsam Himalay Singh|Military|True|1/26/2023 2:20:05 PM
+Making of a General-A Himalayan Echo|Lt.Gen. Konsam |Military|True|1/26/2023 2:20:05 PM
 Yearbook|Seth Rogen|Biography|True|1/26/2023 2:20:05 PM
 The Only Story|Julian Barnes|Fiction|True|1/26/2023 2:20:05 PM
 Applied Ballistics for Long Range Shooting|Bryan Litz|Research|True|1/26/2023 2:20:05 PM
