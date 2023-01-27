@@ -35,6 +35,10 @@ namespace Library
                 else
                 {
                     string[] parts = line.Split("|");
+                    if(parts.Length < 4)
+                    {
+                        break;
+                    }
                     Books book = new Books(parts[0], parts[1], parts[2], bool.Parse(parts[3]), DateTime.Parse(parts[4]));
                     listBooks.Add(book);
                 }
