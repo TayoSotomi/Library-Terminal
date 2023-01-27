@@ -36,13 +36,28 @@ namespace Library
             return dueDate;
         }
 
-        public bool GetStatus()
+        public string GetStatus(bool Status)
         {
-            return Status;
+            if (Status == false)
+            {
+                return $"{Title} is not Available";
+
+            }
+            else if(Status == true)
+            {
+                return $"{Title} is not available";
+            }
+            return " ";
         }
+        
+
+        
+        
+
+
     }
 }
-        
+
 
       
 
