@@ -1,9 +1,7 @@
 ﻿using Library;
 
-string filepath = "../../../Books.txt";
-
-FileIO.FileVerifier(filepath); //Verifies that file is present.
-List<Books> listBooks = FileIO.FileReader(filepath);//reads all files and places in book class.
+FileIO.FileVerifier(); //Verifies that file is present.
+List<Books> listBooks = FileIO.FileReader();//reads all files and places in book class.
 //===================================================================================================================
 //List of books
 
@@ -28,6 +26,6 @@ Console.ReadLine();
 //=================================================================================================================================
 
 
-FileIO.fileWriter(listBooks, filepath);
+FileIO.fileWriter(listBooks);
 
 

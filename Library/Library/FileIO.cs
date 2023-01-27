@@ -10,20 +10,20 @@ namespace Library
     {
         //methods
 
-        public static void FileVerifier(string filePath)
+        public static void FileVerifier()
         {
 
-            if (!File.Exists(filePath))
+            if (!File.Exists("../../../Books.txt"))
             {
-                StreamWriter tempWriter = new StreamWriter(filePath);
+                StreamWriter tempWriter = new StreamWriter("../../../Books.txt");
                 tempWriter.WriteLine("Burnt|Burnt|Burnt|false|1/26/2023 2:20:05 PM");
                 tempWriter.Close();
             }
         }
-        public static List<Books> FileReader(string filePath)
+        public static List<Books> FileReader()
         {
             List<Books> listBooks = new List<Books>();
-            StreamReader libraryCatalogueReader = new StreamReader(filePath);
+            StreamReader libraryCatalogueReader = new StreamReader("../../../Books.txt");
 
             while (true)
             {
@@ -47,9 +47,9 @@ namespace Library
             
             return listBooks;
         }
-        public static void fileWriter(List<Books> books, string filePath)
+        public static void fileWriter(List<Books> books)
         {
-            StreamWriter writer = new StreamWriter(filePath);
+            StreamWriter writer = new StreamWriter("../../../Books.txt");
             foreach(Books b in books)
             {
                 writer.WriteLine($"{b.Title}|{b.Author}|{b.Category}|{b.Status}|{b.Due}");
