@@ -34,9 +34,6 @@ while (runProgram)
       "5) Choose book at random\n" +
       "6) Return a book\n" +
       "7) Checkout");
-    //Mike^
-
-    //List<Books> Selection = new List<Books>();
     string selected = " ";
     
     int menuChoice = Validator.intValidator();
