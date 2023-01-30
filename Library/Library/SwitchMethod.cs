@@ -1,5 +1,4 @@
 ﻿using Circle;
-using Library;
 
 namespace Library
 {
@@ -58,38 +57,58 @@ namespace Library
     {
       int result = Validator.intValidator(Booklist);
       return result;
-        }
-        //Return Books
-      
-
-        //cart
- public static List<Books> SelectedBooks(List<Books>Booklist,Books selection)
-        {
-            //List<Books> chosenBooks = Booklist.Where(nameof => nameof.Title == selection.ToLower() || nameof.Category == selection.ToLower() || nameof.Author == selection.ToLower()).ToList();
-            Booklist.Add(selection);
-            Console.WriteLine($"There are {Booklist.Count} Books in this cart");
-
-            //List<Books> list = new List<Books>();
-
-            foreach (Books B in Booklist.OrderBy(B => B.Title))
-            {
-                Console.WriteLine(B.GetInfo());
-              
-            }
-
-            return Booklist;
-
-        }
-
-
-        //Change Status
-        public static List<Books> ChangeStatus(List<Books> CheckedOutBooks)
-        {
-            foreach (Books book in CheckedOutBooks)
-            {
-                book.Status = false;
-            }
-            return CheckedOutBooks;
-        }
     }
+    //Return Books
+
+
+    //cart
+    public static List<Books> SelectedBooks(List<Books> Booklist, Books selection)
+    {
+      //List<Books> chosenBooks = Booklist.Where(nameof => nameof.Title == selection.ToLower() || nameof.Category == selection.ToLower() || nameof.Author == selection.ToLower()).ToList();
+      Booklist.Add(selection);
+      Console.WriteLine($"There are {Booklist.Count} Books in this cart");
+
+      //List<Books> list = new List<Books>();
+
+      foreach (Books B in Booklist.OrderBy(B => B.Title))
+      {
+        Console.WriteLine(B.GetInfo());
+
+      }
+
+      return Booklist;
+
+    }
+
+
+    //Change Status
+    public static List<Books> ChangeStatus(List<Books> CheckedOutBooks)
+    {
+      foreach (Books book in CheckedOutBooks)
+      {
+        book.Status = false;
+      }
+      return CheckedOutBooks;
+    }
+    //Return Books
+    public static void ReturnBookM(List<Books> CheckedOutBooks)
+    {
+      foreach (Books book in CheckedOutBooks)
+      {
+        book.Status = true;
+      }
+      //Mike^
+    }
+
+
+    //Change Status
+    public static void CheckOutM(List<Books> AvailableBooks)
+    {
+      foreach (Books book in AvailableBooks)
+      {
+        book.Status = false;
+      }
+      //Mike^
+    }
+  }
 }
