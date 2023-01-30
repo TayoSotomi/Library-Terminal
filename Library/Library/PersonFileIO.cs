@@ -24,7 +24,6 @@ namespace Library
         public static List<User> PersonFileReader()
         {
             List<User> listUser = new List<User>();
-            List<string> listBooks = new List<string>();
             StreamReader UserReader = new StreamReader("../../../User.txt");
 
             while (true)

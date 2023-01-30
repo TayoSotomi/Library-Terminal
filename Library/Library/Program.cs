@@ -1,7 +1,7 @@
 ﻿using Library;
 
 FileIO.FileVerifier(); //Verifies that file is present.
-PersonFileIO.PersonFileReader();
+PersonFileIO.PersonFileVerifier();
 List<Books> unlistBooks = FileIO.FileReader();//reads all files and places in book class.
 List<Books> listBooks = unlistBooks.OrderBy(x => x.Title).ToList();
 List<Books> selectedBooks = FileIO.FileReader(); //This holds the books they've selected.
@@ -68,23 +68,27 @@ else if (menuChoice == 6)
   Console.WriteLine("\nWould you like to choose another?");
 }
 
-Console.WriteLine("\nWould you like to check out a book from this list?\nPlease select \"Yes\" to pick from this list or select \"No\" to see more book options?");
-string makeSelection = Console.ReadLine().ToLower().Trim();
-if (makeSelection == "yes")
-{
-  Console.WriteLine("Which book would you like to check out?");
-  string theirPick = Console.ReadLine().ToLower().Trim();
 
-  DateTime checkOutDate = DateTime.Now;
-  Console.WriteLine(Books.GetDueDate(checkOutDate));
-  //check out process
-  filler = false;
-  //break;
-}
-else if (makeSelection == "no")
+while (true)
 {
-  filler = true;
-  /*break;*/ //loop back through author 
+    Console.WriteLine("\nWould you like to check out a book from this list?\nPlease select \"Yes\" to pick from this list or select \"No\" to see more book options?");
+    string makeSelection = Console.ReadLine().ToLower().Trim();
+    if (makeSelection == "yes")
+    {
+        Console.WriteLine("Which book would you like to check out?");
+        string theirPick = Console.ReadLine().ToLower().Trim();
+
+        DateTime checkOutDate = DateTime.Now;
+        Console.WriteLine(Books.GetDueDate(checkOutDate));
+        //check out process
+        filler = false;
+        //break;
+    }
+    else if (makeSelection == "no")
+    {
+        filler = true;
+        /*break;*/ //loop back through author 
+    }
 }
 
 
