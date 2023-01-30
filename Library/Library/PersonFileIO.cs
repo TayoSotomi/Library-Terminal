@@ -16,7 +16,7 @@ namespace Library
 
             if (!File.Exists("../../../User.txt"))
             {
-                StreamWriter tempWriter = new StreamWriter("../../../Books.txt");
+                StreamWriter tempWriter = new StreamWriter("../../../User.txt");
                 tempWriter.WriteLine("Burnt|Burnt|Burnt");
                 tempWriter.Close();
             }
@@ -25,7 +25,7 @@ namespace Library
         {
             List<User> listUser = new List<User>();
             List<string> listBooks = new List<string>();
-            StreamReader UserReader = new StreamReader("../../../Books.txt");
+            StreamReader UserReader = new StreamReader("../../../User.txt");
 
             while (true)
             {
@@ -49,16 +49,12 @@ namespace Library
 
             return listUser;
         }
-        public static void fileWriter(List<User> User, List<Books> CheckedOutBooks)
+        public static void fileWriter(List<User> User)
         {
-            StreamWriter writer = new StreamWriter("../../../Books.txt");
+            StreamWriter writer = new StreamWriter("../../../User.txt");
             foreach (User u in User)
             {
-                writer.WriteLine($"{u.UserName}|{u.Password}|");
-                foreach(Books book in CheckedOutBooks)
-                {
-                    writer.Write($"{book.Title}%");
-                }
+                writer.WriteLine($"{u.UserName}|{u.Password}|{u.CheckedOutBooks}%");
             }
             writer.Close();
         }

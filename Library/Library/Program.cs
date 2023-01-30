@@ -1,16 +1,15 @@
 ﻿using Circle;
 using Library;
+using System.Security.Cryptography.X509Certificates;
 
 FileIO.FileVerifier(); //Verifies that file is present.
-PersonFileIO.PersonFileVerifier();
-List<Books> unlistBooks = FileIO.FileReader();
-List<Books> listBooks = unlistBooks.OrderBy(x => x.Title).ToList();
+PersonFileIO.PersonFileVerifier();//verifies file present
+List<Books> unlistBooks = FileIO.FileReader(); //unsorted books
+List<Books> listBooks = unlistBooks.OrderBy(x => x.Title).ToList();//alphabetical order
 List<Books> selectedBooks = FileIO.FileReader(); //This holds the books they've selected.
-List<User> userList = PersonFileIO.PersonFileReader(); //This holds the books they've selected.
+List<User> userList = PersonFileIO.PersonFileReader(); //List of users
 
-//Mike^
-//===================================================================================================================
-//List of books
+
 bool filler = true;
 bool runProgram = true;
 
@@ -19,6 +18,54 @@ List<Books> Cart = new List<Books>();
 
 Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute of History, my name is {Books.PickName()} and I will be your \nlibrarian today. Currently, " +
   $"we have {listBooks.Count} books available to check out.");
+
+Console.WriteLine("Are you a new or returning user?");
+string newUserName = "";
+string newPassword = "";
+int userIndex = 0;
+while (true)
+{
+    string answer = Console.ReadLine().Trim().ToLower();
+
+    if (answer == "new")
+    {
+        newUserName = User.newUserName();
+        newPassword = User.newPassword();
+        userList.Add(new User(newUserName, newPassword, "No Checked out books"));
+        userIndex = userList.FindIndex(x => x.UserName == newUserName);
+        break;
+    }
+    else if (answer.Contains("return"))
+    {
+        newUserName = User.returningUser(userList);
+        if(newUserName == "No Username found.") 
+        {
+            Console.WriteLine("Username incorrect too many times. Have a good day.");
+            runProgram=false;
+            break;
+        }
+        else if (newUserName == "Julius Ceaser")
+        {
+            Console.WriteLine("Thanks for putting humans back centuries.");
+            runProgram=false;
+            listBooks.Clear();
+            break;
+        }
+        else
+        {
+            userIndex = userList.FindIndex(x => x.UserName == newUserName);
+        }
+        runProgram = User.returningPassword(userIndex, userList);
+
+        break;
+    }
+    else
+    {
+        Console.WriteLine("Please enter new or returning.");
+    }
+}
+
+
 while (runProgram)
 {
 
@@ -98,22 +145,8 @@ while (runProgram)
   }
   else if (menuChoice == 6)//returnbooks
   {
-    List<Books> checkedOutBooks = new List<Books>();
-
-    Console.WriteLine("Here are the books we currently have checked out, which book would you like to return");
-
-    foreach (Books books in selectedBooks)
-    {
-      if (books.Status == false)
-      {
-        checkedOutBooks.Add(books);
-        //SwitchMethod.ReturnBookM(selectedBooks);
-
-        Console.WriteLine(books.Title);
-        //filler = Validator.GetContinue($"Alright, I have returned that book for you. Would you like to return anymore books?");
-      }
-    }
-    SwitchMethod.ReturnBookM(checkedOutBooks);
+    
+    SwitchMethod.ReturnBookM(User.ReturnUserBooks(listBooks,userList,userIndex),userList,userIndex);
     //Mike^
   }
   else if (menuChoice == 7)//checkout
@@ -130,7 +163,7 @@ while (runProgram)
         if (makeSelection == "yes")
         {
           checkedOut.Add(book);
-          ;
+          
           break;
         }
         else if (makeSelection == "no")
@@ -144,15 +177,17 @@ while (runProgram)
       }
 
     }
+    string userBooks = "";
     SwitchMethod.CheckOutM(ref checkedOut);
     foreach (Books book in checkedOut)
     {
       Console.WriteLine(book.GetInfoCheckOut());
-
+            userBooks += book.Title.Trim() + "%";
     }
-
+    userList[userIndex].CheckedOutBooks = userBooks;
     Console.WriteLine("Have a good day.");
     runProgram = false;
+            
   }
   Console.WriteLine("Press Enter to continue.");
   Console.ReadLine();
@@ -163,6 +198,7 @@ while (runProgram)
 //=================================================================================================================================
 
 FileIO.fileWriter(listBooks);
+PersonFileIO.fileWriter(userList);
 //PersonFileIO.PersonFileReader()
 
 

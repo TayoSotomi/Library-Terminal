@@ -111,10 +111,11 @@ namespace Library
             return CheckedOutBooks;
         }
         
-    public static void ReturnBookM(List<Books> CheckedOutBooks)
+    public static void ReturnBookM(List<Books> CheckedOutBooks,List<User> allUsers, int indexUser)
     {
             bool loop = true;
-
+            Console.WriteLine("Here are the books you currently have checked out, which book would you like to return");
+            List<string> bookNames = allUsers[indexUser].CheckedOutBooks.Split("%").ToList();
             while (loop)
             {
                 string result = Console.ReadLine().Trim().ToLower();
@@ -126,7 +127,8 @@ namespace Library
                         book.Status = true;
                         //to show the last time it was returned 
                         book.Due = DateTime.Now;
-                       
+                        bookNames.Remove(book.Title);
+
                     }
 
                 }
@@ -153,6 +155,13 @@ namespace Library
                 
                
             }
+            string returnValue = "";
+            foreach (string book in bookNames)
+            {
+                returnValue += book+"%";
+            }
+            allUsers[indexUser].CheckedOutBooks = returnValue;
+            
             //Mike^
         }
 
