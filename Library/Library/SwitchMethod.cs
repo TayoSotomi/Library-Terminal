@@ -65,12 +65,12 @@ namespace Library
         //cart
  public static List<Books> SelectedBooks(List<Books>Booklist,Books selection)
         {
-            //List<Books> chosenBooks = Booklist.Where(nameof => nameof.Title == selection.ToLower() || nameof.Category == selection.ToLower() || nameof.Author == selection.ToLower()).ToList();
+            //Adds selection to Booklist
             Booklist.Add(selection);
             Console.WriteLine($"There are {Booklist.Count} Books in this cart");
 
-            //List<Books> list = new List<Books>();
-
+            //Displays books in Booklist
+            //sorts books in Booklist in Alphabetical order
             foreach (Books B in Booklist.OrderBy(B => B.Title))
             {
                 Console.WriteLine(B.GetInfo());

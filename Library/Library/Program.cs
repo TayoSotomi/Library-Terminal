@@ -40,8 +40,7 @@ if (menuChoice == 1)
          selected = Console.ReadLine();
         SwitchMethod.SelectedBooks(Cart,book);
 
-        //  Selection = listBooks.Where(book => book.Equals(selected)).ToList();
-        //Console.WriteLine(SwitchMethod.SelectedBooks(Selection));
+       
     }
 }
 else if (menuChoice == 2)
