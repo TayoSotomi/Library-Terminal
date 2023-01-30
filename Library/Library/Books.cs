@@ -23,11 +23,10 @@ namespace Library
     //method
     public string GetInfo()
     {
-      return ($"{Title}|{Author}|{Category}|{Status}|{Due}");
+      return (String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{Title}", Author, Category, IsAvailable()));
     }
     public static DateTime GetDueDate(DateTime checkOutDate)
     {
-      DateTime check = checkOutDate;
       DateTime dueDate = checkOutDate.AddDays(13);
       return dueDate;
     }
@@ -66,17 +65,18 @@ namespace Library
       return name;
     }
 
-    public static string RandomBook(List<Books> Booklist)
+    public static Books RandomBook(List<Books> Booklist)
     {
       int i = 1;
       int random = Books.GetRandomEditMinMax(1, 1, Booklist.Count);
 
-      if (random >= 1 || random <= 26)
+      if (random >= 1 || random <= Booklist.Count)
       {
         
         i++;
       }
-      return $"{i}. {Booklist[random].Title}, {Booklist[random].Author}, {Booklist[random].Category}, {Booklist[random].IsAvailable()}";
+            //return $"{i}. {Booklist[random].Title}, {Booklist[random].Author}, {Booklist[random].Category}, {Booklist[random].IsAvailable()}";
+            return Booklist[i];
     }
       public string IsAvailable()
       {

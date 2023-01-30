@@ -1,4 +1,4 @@
-Applied Ballistics for Long Range Shooting|Bryan Litz|Research|True|1/26/2023 2:20:05 PM
+Applied Ballistics for Long Range Shooting|Bryan Litz|Research|False|2/12/2023 10:12:54 AM
 Can’t Hurt Me|David Goggins|Memoir|True|1/26/2023 2:20:05 PM
 Critique of Political Economy,Vol.1|Karl Marx|Poli Science|True|1/26/2023 2:20:05 PM
 Damn Few|Rorke Denver|Memoir|True|1/26/2023 2:20:05 PM
@@ -19,7 +19,7 @@ Storeys Guide to Raising Chickens|Gail Damerow|Agriculture|True|1/26/2023 2:20:0
 The 7 Habits of Highly Effective People|Stephen R. Covey|Self Help|True|1/26/2023 2:20:05 PM
 The Art of War|Sun Tzu |Essay|True|1/26/2023 2:20:05 PM
 The Big Book of Kombucha|Hannah Crum & Alex|Cookbook|True|1/26/2023 2:20:05 PM
-The Giving Tree|Shel SilverStein|Childrens|True|1/26/2023 2:20:05 PM
+The Giving Tree|Shel SilverStein|Childrens|False|2/12/2023 10:12:54 AM
 The Great Shark Hunt|Hunter S Thompson|Essay|True|1/26/2023 2:20:05 PM
 The Motorcycle Diaries|Che Guevara|Memior|True|1/26/2023 2:20:05 PM
 The Only Story|Julian Barnes|Fiction|True|1/26/2023 2:20:05 PM

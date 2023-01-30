@@ -55,33 +55,81 @@ namespace Library
     }
     public static int NumberFinder(List<Books> Booklist)
     {
-      int result = Validator.intValidator(Booklist);
-      return result; 
+      int result = Validator.intListValidator(Booklist);
+      return result;
     }
-        //Return Books
-        public static List<Books> ReturnBook(List<Books> list)
-        {
-            List<Books> CheckedOutBooks = new List<Books>();
-            foreach (Books book in list)
-            {
-                if (book.Status == true)
-                {
-                    CheckedOutBooks.Add(book);
+    //Return Books
 
+
+    //cart
+    public static List<Books> SelectedBooks(List<Books> Booklist, Books selection)
+    {
+          
+            Console.WriteLine("Would you like to add this book to your cart?");
+            while (true)
+            {
+                string result = Console.ReadLine().Trim().ToLower();
+                if (result == "yes"&& selection.Status == true)
+                {
+                    Booklist.Add(selection);
+                    Console.WriteLine($"{selection.Title} has been added to your cart.");
+                    break;
+                }
+                else if (result == "no")
+                {
+                    Console.WriteLine("Book not added.");
+                    break;
+                }
+                else if (selection.Status == false)
+                {
+                    Console.WriteLine("The Book is not available as it is checked out.");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter yes or no.");
                 }
             }
-            return CheckedOutBooks;
-        }
+      Console.WriteLine($"There are {Booklist.Count} Books in this cart");
+      foreach (Books B in Booklist.OrderBy(B => B.Title))
+      {
+        Console.WriteLine(B.GetInfo());
+      }
 
+      return Booklist;
 
-        //Change Status
-        public static List<Books> ChangeStatus(List<Books> CheckedOutBooks)
-        {
-            foreach (Books book in CheckedOutBooks)
-            {
-                book.Status = false;
-            }
-            return CheckedOutBooks;
-        }
     }
+
+
+    //Change Status
+    public static List<Books> ChangeStatus(List<Books> CheckedOutBooks)
+    {
+      foreach (Books book in CheckedOutBooks)
+      {
+        book.Status = false;
+      }
+      return CheckedOutBooks;
+    }
+    //Return Books
+    public static void ReturnBookM(List<Books> CheckedOutBooks)
+    {
+      foreach (Books book in CheckedOutBooks)
+      {
+        book.Status = true;
+      }
+      //Mike^
+    }
+
+
+    //Change Status
+    public static void CheckOutM(ref List<Books> AvailableBooks)
+    {
+      foreach (Books book in AvailableBooks)
+      {
+        book.Status = false;
+        book.Due = Books.GetDueDate(DateTime.Now);
+      }
+      //Mike^
+    }
+  }
 }

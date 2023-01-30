@@ -11,15 +11,25 @@ namespace Circle
     
     public class Validator
     {
-        public static int intValidator(List<Books> x)
+        public static int intListValidator(List<Books> x)
         {
             Console.WriteLine("Please enter the number of the book you would like to view.");
             int result = 0;
-            while (!int.TryParse(Console.ReadLine(), out result) || result < 1 || result > x.Count)
+            while (!int.TryParse(Console.ReadLine(), out result) || result < 1 || result > x.Count )
             {
                 Console.WriteLine($"Only positive numbers between 1 and {x.Count}");
             }
             return result - 1;
+        }
+        public static int intValidator()
+        {
+            Console.WriteLine("Please enter the number of the book you would like to view.");
+            int result = 0;
+            while (!int.TryParse(Console.ReadLine(), out result) || result < 1 || result > 7)
+            {
+                Console.WriteLine($"Only positive numbers between 1 and {7}");
+            }
+            return result;
         }
         public static int GetUserNumberInt()
         {

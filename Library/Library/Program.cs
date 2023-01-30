@@ -1,113 +1,170 @@
 ﻿using Library;
+using Circle;
 
 FileIO.FileVerifier(); //Verifies that file is present.
 PersonFileIO.PersonFileVerifier();
 List<Books> unlistBooks = FileIO.FileReader();//reads all files and places in book class.
 List<Books> listBooks = unlistBooks.OrderBy(x => x.Title).ToList();
 List<Books> selectedBooks = FileIO.FileReader(); //This holds the books they've selected.
-List<User> userList = PersonFileIO.PersonFileReader();
+List<User> userList = PersonFileIO.PersonFileReader(); //This holds the books they've selected.
+//Mike^
 //===================================================================================================================
 //List of books
 bool filler = true;
+bool runProgram = true;
 
-int i = 1;
-
-foreach (Books book in listBooks)
-{
-  Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable()));
-  i++;
-}
-
-Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute of History, my name is {Books.PickName()} and I wll be your \nlibrarian today. Now how can I help you.");
-Console.WriteLine("Please choose from one of the follow.\n\n" +
-  "1) Search by author\n" +
-  "2) Search by title keyword\n" +
-  "3) Search by category\n" +
-  "4) Search by number in list\n" +
-  "5) Return book\n" +
-  "6) Choose book at Random");
-
-int menuChoice = int.Parse(Console.ReadLine());
-if (menuChoice == 1)
-{
-  List<Books> booksByAuthor = SwitchMethod.AuthorFinder(listBooks);
-  foreach (Books book in booksByAuthor)
-  {
-    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
-  }
-}
-else if (menuChoice == 2)
-{
-  List<Books> booksByKeyword = SwitchMethod.KeyWordFinder(listBooks);
-  foreach (Books book in booksByKeyword)
-  {
-    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
-  }
-}
-else if (menuChoice == 3)
-{
-  List<Books> booksByCategory = SwitchMethod.CategoryFinder(listBooks);
-  foreach (Books book in booksByCategory)
-  {
-    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
-  }
-}
-else if (menuChoice == 4)
-{
-  int x = SwitchMethod.NumberFinder(listBooks);
- 
-    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", listBooks[x].Title, listBooks[x].Author, listBooks[x].Category, listBooks[x].IsAvailable()));
-}
-else if (menuChoice == 5) //Returns
-{
-}
-else if (menuChoice == 6)
-{
-  Console.WriteLine("Here is your random book selection. I personally love this one.\n");
-  Console.WriteLine(Books.RandomBook(listBooks));
-  Console.WriteLine("\nWould you like to choose another?");
-}
+List<Books> Cart = new List<Books>();
 
 
-while (true)
+Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute of History, my name is {Books.PickName()} and I wll be your \nlibrarian today. Currently, " +
+  $"we have {listBooks.Count} books available to check out.");
+while (runProgram)
 {
-    Console.WriteLine("\nWould you like to check out a book from this list?\nPlease select \"Yes\" to pick from this list or select \"No\" to see more book options?");
-    string makeSelection = Console.ReadLine().ToLower().Trim();
-    if (makeSelection == "yes")
+    int i = 1;
+    foreach (Books book in listBooks)
     {
-        Console.WriteLine("Which book would you like to check out?");
-        string theirPick = Console.ReadLine().ToLower().Trim();
-
-        DateTime checkOutDate = DateTime.Now;
-        Console.WriteLine(Books.GetDueDate(checkOutDate));
-        //check out process
-        filler = false;
-        //break;
+        Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable()));
+        i++;
     }
-    else if (makeSelection == "no")
+    Console.WriteLine("Please choose from one of the follow.\n\n" +
+      "1) Search by author\n" +
+      "2) Search by title keyword\n" +
+      "3) Search by category\n" +
+      "4) Search by number in list\n" +
+      "5) Choose book at random\n" +
+      "6) Return a book\n" +
+      "7) Checkout");
+    //Mike^
+
+    //List<Books> Selection = new List<Books>();
+    string selected = " ";
+    
+    int menuChoice = Validator.intValidator();
+    if (menuChoice == 1)
     {
-        filler = true;
-        /*break;*/ //loop back through author 
+        List<Books> booksByAuthor = SwitchMethod.AuthorFinder(listBooks);
+        foreach (Books book in booksByAuthor)
+        {
+            Console.Clear();
+            Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
+            Cart = SwitchMethod.SelectedBooks(Cart, book);
+
+            //  Selection = listBooks.Where(book => book.Equals(selected)).ToList();
+            //Console.WriteLine(SwitchMethod.SelectedBooks(Selection));
+        }
     }
+    else if (menuChoice == 2)
+    {
+        Console.Clear();
+        List<Books> booksByKeyword = SwitchMethod.KeyWordFinder(listBooks);
+        foreach (Books book in booksByKeyword)
+        {
+            Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
+            Cart = SwitchMethod.SelectedBooks(Cart, book);
+
+        }
+    }
+    else if (menuChoice == 3)
+    {
+        Console.Clear();
+        List<Books> booksByCategory = SwitchMethod.CategoryFinder(listBooks);
+        foreach (Books book in booksByCategory)
+        {
+            Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
+            Cart = SwitchMethod.SelectedBooks(Cart, book);
+        }
+    }
+    else if (menuChoice == 4)
+    {
+        Console.Clear();
+        int x = SwitchMethod.NumberFinder(listBooks);
+
+        Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", listBooks[x].Title, listBooks[x].Author, listBooks[x].Category, listBooks[x].IsAvailable()));
+        Cart = SwitchMethod.SelectedBooks(Cart, listBooks[x]);
+    }
+    else if (menuChoice == 5) //randomnumber
+    {
+        Console.Clear();
+        Console.WriteLine("Here is your book, I personally love this one.\n");
+        Books x = Books.RandomBook(listBooks);
+
+        Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", x.Title, x.Author, x.Category, x.IsAvailable()));
+        Cart = SwitchMethod.SelectedBooks(Cart, x);
+        //Mike^ swapped
+
+        Console.WriteLine("\nWould you like to choose another?");
+    }
+    else if (menuChoice == 6)//returnbooks
+    {
+        foreach (Books book in selectedBooks)
+        {
+            Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable()));
+            i++;
+        }
+        Console.WriteLine("Here are the books we currently have checked out, which book would you like to return");
+        string returnChoice = Console.ReadLine();
+        foreach (Books books in selectedBooks)
+        {
+            if (books.Title == (returnChoice))
+            {
+                listBooks.Add(books);
+                SwitchMethod.ReturnBookM(selectedBooks);
+
+
+                Console.WriteLine();
+                filler = Validator.GetContinue($"Alright, I have returned that book for you. Would you like to return anymore books?");
+            }
+        }
+        //Mike^
+    } 
+    else if (menuChoice == 7)//checkout
+    {
+        List<Books> checkedOut = new List<Books>();
+        Console.WriteLine($"\nWould you like to check out a book from your cart? \nPlease select \"Yes\" to check out the selected book or \"No\" to put it back on the shelf?");
+
+        foreach (Books book in Cart)
+        {
+            Console.WriteLine($"Would you like to check out {book.Title}?");
+            while (true)
+            {
+                string makeSelection = Console.ReadLine().ToLower().Trim();
+                if (makeSelection == "yes")
+                {
+                    checkedOut.Add(book);
+                    break;
+                }
+                else if (makeSelection == "no")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please say yes or no.");
+                }
+            }
+            
+        }
+        SwitchMethod.CheckOutM(ref checkedOut);
+        foreach (Books book in checkedOut)
+        {
+            Console.WriteLine(book.GetInfo());
+        }
+        Console.WriteLine("Have a good day.");
+        runProgram = false;
+    }
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.Clear();
 }
-
-
-
-
-
-
-
-
-
-Console.ReadLine();
-
-
-
-
 //=================================================================================================================================
 
 
 FileIO.fileWriter(listBooks);
 //PersonFileIO.PersonFileReader()
+
+
+
+
+
 
 
