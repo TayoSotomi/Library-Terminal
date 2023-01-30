@@ -3,10 +3,11 @@ using Circle;
 
 FileIO.FileVerifier(); //Verifies that file is present.
 PersonFileIO.PersonFileVerifier();
-List<Books> unlistBooks = FileIO.FileReader();//reads all files and places in book class.
+List<Books> unlistBooks= FileIO.FileReader();
 List<Books> listBooks = unlistBooks.OrderBy(x => x.Title).ToList();
 List<Books> selectedBooks = FileIO.FileReader(); //This holds the books they've selected.
 List<User> userList = PersonFileIO.PersonFileReader(); //This holds the books they've selected.
+
 //Mike^
 //===================================================================================================================
 //List of books
@@ -20,6 +21,7 @@ Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute 
   $"we have {listBooks.Count} books available to check out.");
 while (runProgram)
 {
+   
     int i = 1;
     foreach (Books book in listBooks)
     {
@@ -36,8 +38,8 @@ while (runProgram)
       "7) Checkout");
     //Mike^
 
-    //List<Books> Selection = new List<Books>();
-    string selected = " ";
+    ////List<Books> Selection = new List<Books>();
+    //string selected = " ";
     
     int menuChoice = Validator.intValidator();
     if (menuChoice == 1)
@@ -96,25 +98,22 @@ while (runProgram)
     }
     else if (menuChoice == 6)//returnbooks
     {
-        foreach (Books book in selectedBooks)
-        {
-            Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable()));
-            i++;
-        }
+        List<Books> checkedOutBooks = new List<Books>();
+        
         Console.WriteLine("Here are the books we currently have checked out, which book would you like to return");
-        string returnChoice = Console.ReadLine();
+       
         foreach (Books books in selectedBooks)
         {
-            if (books.Title == (returnChoice))
+            if (books.Status == false)
             {
-                listBooks.Add(books);
-                SwitchMethod.ReturnBookM(selectedBooks);
+                checkedOutBooks.Add(books);
+                //SwitchMethod.ReturnBookM(selectedBooks);
 
-
-                Console.WriteLine();
-                filler = Validator.GetContinue($"Alright, I have returned that book for you. Would you like to return anymore books?");
+                Console.WriteLine(books.Title);
+                //filler = Validator.GetContinue($"Alright, I have returned that book for you. Would you like to return anymore books?");
             }
         }
+        SwitchMethod.ReturnBookM(checkedOutBooks);
         //Mike^
     } 
     else if (menuChoice == 7)//checkout
@@ -155,12 +154,14 @@ while (runProgram)
     Console.WriteLine("Press Enter to continue.");
     Console.ReadLine();
     Console.Clear();
+
+      
 }
 //=================================================================================================================================
 
-
 FileIO.fileWriter(listBooks);
 //PersonFileIO.PersonFileReader()
+
 
 
 

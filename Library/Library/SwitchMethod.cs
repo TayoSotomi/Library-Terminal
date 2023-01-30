@@ -113,12 +113,48 @@ namespace Library
         
     public static void ReturnBookM(List<Books> CheckedOutBooks)
     {
-      foreach (Books book in CheckedOutBooks)
-      {
-        book.Status = true;
-      }
-      //Mike^
-    }
+            bool loop = true;
+
+            while (loop)
+            {
+                string result = Console.ReadLine().Trim().ToLower();
+
+                foreach (Books book in CheckedOutBooks)
+                {
+                    if (book.Title.ToLower().Contains(result))
+                    {
+                        book.Status = true;
+                        //to show the last time it was returned 
+                        book.Due = DateTime.Now;
+                        
+                    }
+
+                }
+
+                while (true)
+                {
+                    Console.WriteLine("would you like to return any more books? yes/No ");
+                    string answer = Console.ReadLine().Trim().ToLower();
+
+                    if (answer == "yes")
+                    {
+                        Console.WriteLine("Please enter the title of the book you would like to return.");
+                    }
+                    else if (answer == "no")
+                    {
+                        loop = false;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("invalid inpu");
+                    }
+                }
+                
+               
+            }
+            //Mike^
+        }
 
 
     //Change Status

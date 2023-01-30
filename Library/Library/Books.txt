@@ -4,7 +4,7 @@ Critique of Political Economy,Vol.1|Karl Marx|Poli Science|True|1/26/2023 2:20:0
 Damn Few|Rorke Denver|Memoir|True|1/26/2023 2:20:05 PM
 Dirk Gently�s Holistic Detective Agency|Douglas Adams|Sci-Fi|True|1/26/2023 2:20:05 PM
 Everyone You Hate Is Going to Die|Daniel Sloss|Self Help|True|1/26/2023 2:20:05 PM
-Half of a Yello Sun|Chimamanda Adichie|Fiction|True|1/26/2023 2:20:05 PM
+Half of a Yellow Sun|Chimamanda Adichie|Fiction|False|2/12/2023 12:06:18 PM
 Iceman: My Fighting Life|Chuck Liddell|Memoir|True|1/26/2023 2:20:05 PM
 Making of a General-A Himalayan Echo|Lt.Gen. Konsam |Military|True|1/26/2023 2:20:05 PM
 Modern Exterior Ballistics|Robert Mccoy|Research|True|1/26/2023 2:20:05 PM
@@ -23,4 +23,4 @@ The Giving Tree|Shel SilverStein|Childrens|False|2/12/2023 10:12:54 AM
 The Great Shark Hunt|Hunter S Thompson|Essay|True|1/26/2023 2:20:05 PM
 The Motorcycle Diaries|Che Guevara|Memior|True|1/26/2023 2:20:05 PM
 The Only Story|Julian Barnes|Fiction|True|1/26/2023 2:20:05 PM
-Yearbook|Seth Rogen|Biography|True|1/26/2023 2:20:05 PM
+Yearbook|Seth Rogen|Biography|False|2/12/2023 12:06:18 PM
