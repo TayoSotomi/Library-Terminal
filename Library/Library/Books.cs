@@ -23,11 +23,10 @@ namespace Library
     //method
     public string GetInfo()
     {
-      return ($"{Title}|{Author}|{Category}|{Status}|{Due}");
+      return (String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{Title}", Author, Category, IsAvailable()));
     }
     public static DateTime GetDueDate(DateTime checkOutDate)
     {
-      DateTime check = checkOutDate;
       DateTime dueDate = checkOutDate.AddDays(13);
       return dueDate;
     }

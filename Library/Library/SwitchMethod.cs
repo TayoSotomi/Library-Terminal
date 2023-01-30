@@ -55,26 +55,46 @@ namespace Library
     }
     public static int NumberFinder(List<Books> Booklist)
     {
-      int result = Validator.intValidator(Booklist);
+      int result = Validator.intListValidator(Booklist);
       return result;
     }
     //Return Books
 
 
-        //cart
- public static List<Books> SelectedBooks(List<Books>Booklist,Books selection)
-        {
-            //Adds selection to Booklist
-            Booklist.Add(selection);
-            Console.WriteLine($"There are {Booklist.Count} Books in this cart");
-
-            //Displays books in Booklist
-            //sorts books in Booklist in Alphabetical order
-            foreach (Books B in Booklist.OrderBy(B => B.Title))
+    //cart
+    public static List<Books> SelectedBooks(List<Books> Booklist, Books selection)
+    {
+          
+            Console.WriteLine("Would you like to add this book to your cart?");
+            while (true)
             {
-                Console.WriteLine(B.GetInfo());
-              
+                string result = Console.ReadLine().Trim().ToLower();
+                if (result == "yes"&& selection.Status == true)
+                {
+                    Booklist.Add(selection);
+                    Console.WriteLine($"{selection.Title} has been added to your cart.");
+                    break;
+                }
+                else if (result == "no")
+                {
+                    Console.WriteLine("Book not added.");
+                    break;
+                }
+                else if (selection.Status == false)
+                {
+                    Console.WriteLine("The Book is not available as it is checked out.");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter yes or no.");
+                }
             }
+      Console.WriteLine($"There are {Booklist.Count} Books in this cart");
+      foreach (Books B in Booklist.OrderBy(B => B.Title))
+      {
+        Console.WriteLine(B.GetInfo());
+      }
 
       return Booklist;
 
@@ -102,11 +122,12 @@ namespace Library
 
 
     //Change Status
-    public static void CheckOutM(List<Books> AvailableBooks)
+    public static void CheckOutM(ref List<Books> AvailableBooks)
     {
       foreach (Books book in AvailableBooks)
       {
         book.Status = false;
+        book.Due = Books.GetDueDate(DateTime.Now);
       }
       //Mike^
     }
