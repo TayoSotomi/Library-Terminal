@@ -27,6 +27,9 @@ Console.WriteLine("Please choose from one of the follow.\n\n" +
   "5) Return book\n" +
   "6) Choose book at Random");
 
+//List<Books> Selection = new List<Books>();
+string selected = " ";
+List<Books> Cart = new List<Books>();
 int menuChoice = int.Parse(Console.ReadLine());
 if (menuChoice == 1)
 {
@@ -34,7 +37,12 @@ if (menuChoice == 1)
   foreach (Books book in booksByAuthor)
   {
     Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
-  }
+         selected = Console.ReadLine();
+        SwitchMethod.SelectedBooks(Cart,book);
+
+        //  Selection = listBooks.Where(book => book.Equals(selected)).ToList();
+        //Console.WriteLine(SwitchMethod.SelectedBooks(Selection));
+    }
 }
 else if (menuChoice == 2)
 {
@@ -42,7 +50,10 @@ else if (menuChoice == 2)
   foreach (Books book in booksByKeyword)
   {
     Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
-  }
+        selected = Console.ReadLine();
+         SwitchMethod.SelectedBooks(Cart,book);
+
+    }
 }
 else if (menuChoice == 3)
 {
@@ -50,13 +61,21 @@ else if (menuChoice == 3)
   foreach (Books book in booksByCategory)
   {
     Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
-  }
+        selected = Console.ReadLine();
+        SwitchMethod.SelectedBooks(Cart,book);
+
+
+    }
 }
 else if (menuChoice == 4)
 {
   int x = SwitchMethod.NumberFinder(listBooks);
  
     Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", listBooks[x].Title, listBooks[x].Author, listBooks[x].Category, listBooks[x].IsAvailable()));
+    selected = Console.ReadLine();
+    SwitchMethod.SelectedBooks(Cart,listBooks[x]);
+
+
 }
 else if (menuChoice == 5) //Returns
 {
@@ -64,11 +83,20 @@ else if (menuChoice == 5) //Returns
 else if (menuChoice == 6)
 {
   Console.WriteLine("Here is your random book selection. I personally love this one.\n");
-  Console.WriteLine(Books.RandomBook(listBooks));
-  Console.WriteLine("\nWould you like to choose another?");
+    // Console.WriteLine(Books.RandomBook(listBooks));
+    Books x = Books.RandomBook(listBooks);
+    //selected = Console.ReadLine();
+     SwitchMethod.SelectedBooks(Cart,x);
+    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", x.Title, x.Author,x.Category,x.IsAvailable()));
+
+
+
+    Console.WriteLine("\nWould you like to choose another?");
+
 }
 
-Console.WriteLine("\nWould you like to check out a book from this list?\nPlease select \"Yes\" to pick from this list or select \"No\" to see more book options?");
+
+Console.WriteLine($"\nWould you like to check out a book from this list? \nPlease select \"Yes\" to pick from this list or select \"No\" to see more book options?");
 string makeSelection = Console.ReadLine().ToLower().Trim();
 if (makeSelection == "yes")
 {
@@ -91,10 +119,6 @@ else if (makeSelection == "no")
 
 
 
-
-
-
-
 Console.ReadLine();
 
 
@@ -105,5 +129,10 @@ Console.ReadLine();
 
 FileIO.fileWriter(listBooks);
 //PersonFileIO.PersonFileReader()
+
+
+
+
+
 
 

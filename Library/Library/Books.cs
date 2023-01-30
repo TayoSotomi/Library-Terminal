@@ -66,17 +66,18 @@ namespace Library
       return name;
     }
 
-    public static string RandomBook(List<Books> Booklist)
+    public static Books RandomBook(List<Books> Booklist)
     {
       int i = 1;
       int random = Books.GetRandomEditMinMax(1, 1, Booklist.Count);
 
-      if (random >= 1 || random <= 26)
+      if (random >= 1 || random <= Booklist.Count)
       {
         
         i++;
       }
-      return $"{i}. {Booklist[random].Title}, {Booklist[random].Author}, {Booklist[random].Category}, {Booklist[random].IsAvailable()}";
+            //return $"{i}. {Booklist[random].Title}, {Booklist[random].Author}, {Booklist[random].Category}, {Booklist[random].IsAvailable()}";
+            return Booklist[i];
     }
       public string IsAvailable()
       {

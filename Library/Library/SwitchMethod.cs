@@ -1,4 +1,5 @@
 ﻿using Circle;
+using Library;
 
 namespace Library
 {
@@ -56,21 +57,28 @@ namespace Library
     public static int NumberFinder(List<Books> Booklist)
     {
       int result = Validator.intValidator(Booklist);
-      return result; 
-    }
+      return result;
+        }
         //Return Books
-        public static List<Books> ReturnBook(List<Books> list)
-        {
-            List<Books> CheckedOutBooks = new List<Books>();
-            foreach (Books book in list)
-            {
-                if (book.Status == true)
-                {
-                    CheckedOutBooks.Add(book);
+      
 
-                }
+        //cart
+ public static List<Books> SelectedBooks(List<Books>Booklist,Books selection)
+        {
+            //List<Books> chosenBooks = Booklist.Where(nameof => nameof.Title == selection.ToLower() || nameof.Category == selection.ToLower() || nameof.Author == selection.ToLower()).ToList();
+            Booklist.Add(selection);
+            Console.WriteLine($"There are {Booklist.Count} Books in this cart");
+
+            //List<Books> list = new List<Books>();
+
+            foreach (Books B in Booklist.OrderBy(B => B.Title))
+            {
+                Console.WriteLine(B.GetInfo());
+              
             }
-            return CheckedOutBooks;
+
+            return Booklist;
+
         }
 
 
