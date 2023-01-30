@@ -25,6 +25,10 @@ namespace Library
     {
       return (String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{Title}", Author, Category, IsAvailable()));
     }
+    public string GetInfoCheckOut()
+    {
+      return (String.Format("{0,-50}{1,20}{2,15}{3,18}", $"{Title}", Author, Category, Due.ToShortDateString()));
+    }
     public static DateTime GetDueDate(DateTime checkOutDate)
     {
       DateTime dueDate = checkOutDate.AddDays(13);

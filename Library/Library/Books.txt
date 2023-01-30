@@ -17,7 +17,7 @@ Salt Fat Acid Heat|Samin Nosrat|Cookbook|True|1/26/2023 2:20:05 PM
 Shantaram|Gregory David|Fiction|True|1/26/2023 2:20:05 PM
 Storeys Guide to Raising Chickens|Gail Damerow|Agriculture|True|1/26/2023 2:20:05 PM
 The 7 Habits of Highly Effective People|Stephen R. Covey|Self Help|True|1/26/2023 2:20:05 PM
-The Art of War|Sun Tzu |Essay|True|1/26/2023 2:20:05 PM
+The Art of War|Sun Tzu |Essay|False|2/12/2023 2:11:33 PM
 The Big Book of Kombucha|Hannah Crum & Alex|Cookbook|True|1/26/2023 2:20:05 PM
 The Giving Tree|Shel SilverStein|Childrens|False|2/12/2023 10:12:54 AM
 The Great Shark Hunt|Hunter S Thompson|Essay|True|1/26/2023 2:20:05 PM
