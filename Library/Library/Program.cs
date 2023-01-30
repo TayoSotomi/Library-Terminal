@@ -1,4 +1,5 @@
 ﻿using Library;
+using Circle;
 
 FileIO.FileVerifier(); //Verifies that file is present.
 PersonFileIO.PersonFileReader();
@@ -6,6 +7,7 @@ List<Books> unlistBooks = FileIO.FileReader();//reads all files and places in bo
 List<Books> listBooks = unlistBooks.OrderBy(x => x.Title).ToList();
 List<Books> selectedBooks = FileIO.FileReader(); //This holds the books they've selected.
 List<User> userList = PersonFileIO.PersonFileReader();
+//Mike^
 //===================================================================================================================
 //List of books
 bool filler = true;
@@ -18,14 +20,16 @@ foreach (Books book in listBooks)
   i++;
 }
 
-Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute of History, my name is {Books.PickName()} and I wll be your \nlibrarian today. Now how can I help you.");
+Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute of History, my name is {Books.PickName()} and I wll be your \nlibrarian today. Currently, " +
+  $"we have {listBooks.Count} books available to check out.");
 Console.WriteLine("Please choose from one of the follow.\n\n" +
   "1) Search by author\n" +
   "2) Search by title keyword\n" +
   "3) Search by category\n" +
   "4) Search by number in list\n" +
-  "5) Return book\n" +
-  "6) Choose book at Random");
+  "5) Choose book at random\n" +
+  "6) Return a book");
+//Mike^
 
 //List<Books> Selection = new List<Books>();
 string selected = " ";
@@ -78,20 +82,39 @@ else if (menuChoice == 4)
 }
 else if (menuChoice == 5) //Returns
 {
+  Console.WriteLine("Here is your random book selection. I personally love this one.\n");
+  // Console.WriteLine(Books.RandomBook(listBooks));
+  Books x = Books.RandomBook(listBooks);
+  //selected = Console.ReadLine();
+  SwitchMethod.SelectedBooks(Cart, x);
+  Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", x.Title, x.Author, x.Category, x.IsAvailable()));
+  //Mike^ swapped
+
+
+  Console.WriteLine("\nWould you like to choose another?");
 }
 else if (menuChoice == 6)
 {
-  Console.WriteLine("Here is your random book selection. I personally love this one.\n");
-    // Console.WriteLine(Books.RandomBook(listBooks));
-    Books x = Books.RandomBook(listBooks);
-    //selected = Console.ReadLine();
-     SwitchMethod.SelectedBooks(Cart,x);
-    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", x.Title, x.Author,x.Category,x.IsAvailable()));
+  foreach (Books book in selectedBooks)
+  {
+    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable()));
+    i++;
+  }
+  Console.WriteLine("Here are the books we currently have checked out, which book would you like to return");
+  string returnChoice = Console.ReadLine();
+  foreach (Books books in selectedBooks)
+  {
+    if (books.Title == (returnChoice))
+    {
+      listBooks.Add(books);
+      SwitchMethod.ReturnBookM(selectedBooks);
 
 
-
-    Console.WriteLine("\nWould you like to choose another?");
-
+      Console.WriteLine();
+      filler = Validator.GetContinue($"Alright, I have returned that book for you. Would you like to return anymore books?");
+    }
+  }
+  //Mike^
 }
 
 
@@ -101,19 +124,25 @@ if (makeSelection == "yes")
 {
   Console.WriteLine("Which book would you like to check out?");
   string theirPick = Console.ReadLine().ToLower().Trim();
+  foreach (Books books in listBooks)
+  {
+    if (books.Title == (theirPick))
+    {
+      selectedBooks.Add(books);
+      SwitchMethod.CheckOutM(selectedBooks);
+      DateTime checkOutDate = DateTime.Now;
 
-  DateTime checkOutDate = DateTime.Now;
-  Console.WriteLine(Books.GetDueDate(checkOutDate));
-  //check out process
-  filler = false;
-  //break;
+      Console.WriteLine($"Alright, you're check out date is { Books.GetDueDate(checkOutDate).ToShortDateString()}");
+      break;
+    }
+  }
 }
 else if (makeSelection == "no")
 {
   filler = true;
   /*break;*/ //loop back through author 
 }
-
+//Mike^
 
 
 

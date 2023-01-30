@@ -1,5 +1,4 @@
 ﻿using Circle;
-using Library;
 
 namespace Library
 {
@@ -58,9 +57,9 @@ namespace Library
     {
       int result = Validator.intValidator(Booklist);
       return result;
-        }
-        //Return Books
-      
+    }
+    //Return Books
+
 
         //cart
  public static List<Books> SelectedBooks(List<Books>Booklist,Books selection)
@@ -77,9 +76,9 @@ namespace Library
               
             }
 
-            return Booklist;
+      return Booklist;
 
-        }
+    }
 
 
         //Change Status
@@ -91,5 +90,25 @@ namespace Library
             }
             return CheckedOutBooks;
         }
+        
+    public static void ReturnBookM(List<Books> CheckedOutBooks)
+    {
+      foreach (Books book in CheckedOutBooks)
+      {
+        book.Status = true;
+      }
+      //Mike^
     }
+
+
+    //Change Status
+    public static void CheckOutM(List<Books> AvailableBooks)
+    {
+      foreach (Books book in AvailableBooks)
+      {
+        book.Status = false;
+      }
+      //Mike^
+    }
+  }
 }
