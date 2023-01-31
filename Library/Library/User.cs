@@ -86,11 +86,12 @@ namespace Library
         //public void ReturnBooks(Books book);
         public static string newPassword()
         {
-            bool pass = true;
+            
             Console.WriteLine("Create your password.\nA password can be a combination of letters and numbers.\nYour password is case-sensitive and must be at least 3 characters long and cannot start with a space.");
 
             while (true)
             {
+                bool pass = true;
                 //string password = Console.ReadLine().Trim();
                 //System.Console.Write("password: ");
                 string password = null;
@@ -136,7 +137,7 @@ namespace Library
                         }
                         else if (choice == "no")
                         {
-                            pass = true;
+                            pass = false;
 
                         }
                         else
