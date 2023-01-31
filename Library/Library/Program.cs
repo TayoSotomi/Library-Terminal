@@ -148,7 +148,7 @@ while (runProgram)
   }
   else if (menuChoice == 6)//returnbooks
   {
-    
+        Console.Clear();
     SwitchMethod.ReturnBookM(User.ReturnUserBooks(listBooks,userList,userIndex),userList,userIndex);
     //Mike^
   }

@@ -69,10 +69,14 @@ namespace Library
             while (true)
             {
                 string result = Console.ReadLine().Trim().ToLower();
-                if (result == "yes"&& selection.Status == true)
+                if (result == "yes"&& selection.Status == true && !Booklist.Any(x=>x.Title == selection.Title))
                 {
                     Booklist.Add(selection);
                     Console.WriteLine($"{selection.Title} has been added to your cart.");
+                    break;
+                }else if (Booklist.Any(x=>x.Title == selection.Title))
+                {
+                    Console.WriteLine("Sorry that book is already in your cart.");
                     break;
                 }
                 else if (result == "no")

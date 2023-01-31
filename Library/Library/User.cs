@@ -30,19 +30,26 @@ namespace Library
             {
                 string name = Console.ReadLine().Trim();
                 Console.WriteLine($"Are you happy with {name} for your username?");
-               string result = Console.ReadLine().ToLower().Trim();
-                if(result == "yes")
+               
+                while (true)
                 {
-                    Console.WriteLine($"Welcome {name}!");
-                    return name;
-                }else if(result == "no")
-                {
-                    Console.WriteLine("Please enter your preferred username.");
+                    string result = Console.ReadLine().ToLower().Trim();
+                    if (result == "yes")
+                    {
+                        Console.WriteLine($"Welcome {name}!");
+                        return name;
+                    }
+                    else if (result == "no")
+                    {
+                        Console.WriteLine("Please enter your preferred username.");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please type yes or no.");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Please type yes or no.");
-                }
+                
             }
         }
         public static string returningUser(List<User> UserList)
@@ -82,10 +89,21 @@ namespace Library
 
             while (true)
             {
-                string password = Console.ReadLine().Trim();
+                //string password = Console.ReadLine().Trim();
+                //System.Console.Write("password: ");
+                string password = null;
+                while (true)
+                {
+                    var key = System.Console.ReadKey(true);
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        break;
+                    }
+                    password += key.KeyChar;
+                }
                 if (password.Length < 3)
                 {
-                    Console.WriteLine($"Passwords must 3 characters or longer and not begin with a space please try again.");
+                    Console.WriteLine($"Passwords must be 3 characters or longer and not begin with a space please try again.");
                 }
                 else
                 {
@@ -118,8 +136,15 @@ namespace Library
             Console.WriteLine("Please enter your password.");
             while (true)
             {
-                string result = Console.ReadLine().Trim();
-                if (result == y[x].Password)
+                string password = null;
+                while (true)
+                {
+                    var key = System.Console.ReadKey(true);
+                    if (key.Key == ConsoleKey.Enter)
+                        break;
+                    password += key.KeyChar;
+                }
+                if (password == y[x].Password)
                 {
                     return true;
                 }
