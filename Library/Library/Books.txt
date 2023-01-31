@@ -5,7 +5,7 @@ Damn Few|Rorke Denver|Memoir|True|1/26/2023 2:20:05 PM
 Dirk Gently s Holistic Detective Agency|Douglas Adams|Sci-Fi|True|1/26/2023 2:20:05 PM
 Everyone You Hate Is Going to Die|Daniel Sloss|Self Help|True|1/26/2023 2:20:05 PM
 Half of a Yellow Sun|Chimamanda Adichie|Fiction|True|2/12/2023 12:06:18 PM
-Iceman: My Fighting Life|Chuck Liddell|Memoir|False|2/13/2023 11:00:10 AM
+Iceman: My Fighting Life|Chuck Liddell|Memoir|True|1/31/2023 11:15:21 AM
 Making of a General-A Himalayan Echo|Lt.Gen. Konsam |Military|True|1/26/2023 2:20:05 PM
 Modern Exterior Ballistics|Robert Mccoy|Research|True|1/26/2023 2:20:05 PM
 On War|Carl von Clausewitz|Essay|True|2/12/2023 2:59:32 PM
