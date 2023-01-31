@@ -23,4 +23,4 @@ The Giving Tree|Shel SilverStein|Childrens|False|2/12/2023 4:18:15 PM
 The Great Shark Hunt|Hunter S Thompson|Essay|False|2/12/2023 3:12:53 PM
 The Motorcycle Diaries|Che Guevara|Memior|True|1/26/2023 2:20:05 PM
 The Only Story|Julian Barnes|Fiction|True|1/26/2023 2:20:05 PM
-Yearbook|Seth Rogen|Biography|True|2/12/2023 12:06:18 PM
+Yearbook|Seth Rogen|Biography|False|2/12/2023 11:40:02 PM

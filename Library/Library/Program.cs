@@ -15,9 +15,9 @@ bool runProgram = true;
 
 List<Books> Cart = new List<Books>();
 
-
+List<Books> Available = listBooks.Where(B => B.Status == true).ToList();
 Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute of History, my name is {Books.PickName()} and I will be your \nlibrarian today. Currently, " +
-  $"we have {listBooks.Count} books available to check out.");
+  $"we have {Available.Count} books available to check out.");
 
 Console.WriteLine("Are you a new or returning user?");
 string newUserName = "";
