@@ -30,14 +30,14 @@ namespace Library
             {
                 string name = Console.ReadLine().Trim();
         Console.Clear();
-                Console.WriteLine($"Are you happy with {name} as your username? Type yes to confrim or no to enter a new one.");
+                Console.WriteLine($"Are you happy with {name} as your username? Type yes to confirm or no to enter a new one.");
                
                 while (true)
                 {
                     string result = Console.ReadLine().ToLower().Trim();
                     if (result == "yes")
                     {
-                        Console.WriteLine($"Welcome {name}!");
+                        Console.WriteLine($"Welcome to the Campus Library of the Mouseion Institute of History, {name}!");
                         return name;
                     }
                     else if (result == "no")
@@ -116,8 +116,8 @@ namespace Library
                         string choice = Console.ReadLine().Trim().ToLower();
                         if (choice == "yes")
                         {
-              Console.WriteLine("Remember, here at the Mouseion Institute of History, we will never ask you for your account password. Our staff may ask\nfor your username or email address, " +
-"but never for your password.\n\nIf you receive an email that appears to be from CampusLibrary@MIOH.edu asking for your account password, it is not from us, so\nplease do not respond " +
+              Console.WriteLine("Remember, here at the Mouseion Institute of History, we will never ask you for your password. Our staff may ask\nfor your username or email address, " +
+"but never for your password.\n\nIf you receive an email that appears to be from CampusLibrary@MIOH.edu asking for your password, it is not from us, so\nplease do not respond " +
 "and contact our team, to let us know at CampusLibrary@MIOH.edu. so we can protect others.\n\nOur organization keeps sensitive user information such as a user’s contact information " +
 "and address. We are also the\nlargest unarchived repository of information in all of Western Civilization, possibly the world. While we do have\nsecurity measures installed that keep that " +
 "information safe, once again our content library IS NOT archived and\nour works are not found elsewhere in the world.\n\nThe survival of our libraries content is detrimental to the surivial " +
@@ -191,7 +191,7 @@ namespace Library
                     checkedOutBooks.Add(books);
                     //SwitchMethod.ReturnBookM(selectedBooks);
 
-                    Console.WriteLine($"{books.Title} due {books.Due}");
+                    Console.WriteLine($"{books.Title}\tDue back on: {books.Due.ToShortDateString()}");
                     //filler = Validator.GetContinue($"Alright, I have returned that book for you. Would you like to return anymore books?");
                 }
             }
