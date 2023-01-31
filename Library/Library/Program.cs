@@ -17,7 +17,7 @@ List<Books> Cart = new List<Books>();
 //A list to capture only books that are available
 List<Books> Available = listBooks.Where(B => B.Status == true).ToList();
 Console.WriteLine($"Welcome to the Campus Library of the Mouseion Institute of History, my name is {Libraraian} and I will be your \nlibrarian today. Currently, " +
-  $"we have {listBooks.Count} books available to check out.\n");
+  $"we have {Available.Count} books available to check out.\n");
 
 Console.WriteLine("Are you a new or returning user?");
 //assigning variables
