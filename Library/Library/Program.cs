@@ -77,7 +77,7 @@ while (runProgram)
   int i = 1;
   foreach (Books book in listBooks)
   {
-    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable()));
+    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable(), book.Due));
     i++;
   }
   Console.WriteLine("Please choose from one of the follow.\n\n" +
