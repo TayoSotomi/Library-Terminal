@@ -86,11 +86,11 @@ namespace Library
       {
         if (Status == true)
         {
-          return "Available";
+          return "On Shelf";
         }
         else
         {
-          return "Not Available";
+          return "Not On Shelf";
         }
       }
 

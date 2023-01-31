@@ -12,12 +12,12 @@ List<User> userList = PersonFileIO.PersonFileReader(); //List of users
 
 bool filler = true;
 bool runProgram = true;
-
+string Libraraian = Books.PickName();
 List<Books> Cart = new List<Books>();
 
 List<Books> Available = listBooks.Where(B => B.Status == true).ToList();
-Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute of History, my name is {Books.PickName()} and I will be your \nlibrarian today. Currently, " +
-  $"we have {Available.Count} books available to check out.");
+Console.WriteLine($"Welcome to the Campus Library of the Mouseion Institute of History, my name is {Libraraian} and I will be your \nlibrarian today. Currently, " +
+  $"we have {listBooks.Count} books available to check out.\n");
 
 Console.WriteLine("Are you a new or returning user?");
 string newUserName = "";
@@ -80,10 +80,10 @@ while (runProgram)
     "2) Search by title keyword\n" +
     "3) Search by category\n" +
     "4) Search by number in list\n" +
-    "5) Choose book at random\n" +
+   $"5) Random book selection by {Libraraian}\n" +
     "6) Return a book\n" +
     "7) Checkout");
-  //Mike^
+
 
   ////List<Books> Selection = new List<Books>();
   //string selected = " ";
@@ -125,7 +125,6 @@ while (runProgram)
   }
   else if (menuChoice == 4)
   {
-    
     int x = SwitchMethod.NumberFinder(listBooks);
 
     Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", listBooks[x].Title, listBooks[x].Author, listBooks[x].Category, listBooks[x].IsAvailable()));
@@ -134,12 +133,12 @@ while (runProgram)
   else if (menuChoice == 5) //randomnumber
   {
     Console.Clear();
-    Console.WriteLine("Here is your book, I personally love this one.\n");
+    Console.WriteLine("Here is my curated pick for you, I personally love this one and I think you will too.\n");
     Books x = Books.RandomBook(listBooks);
 
     Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", x.Title, x.Author, x.Category, x.IsAvailable()));
     Cart = SwitchMethod.SelectedBooks(Cart, x);
-    //Mike^ swapped
+
 
     Console.WriteLine("\nWould you like to choose another?");
   }
@@ -147,7 +146,7 @@ while (runProgram)
   {
         Console.Clear();
     SwitchMethod.ReturnBookM(User.ReturnUserBooks(listBooks,userList,userIndex),userList,userIndex);
-    //Mike^
+
   }
   else if (menuChoice == 7)//checkout
   {
@@ -172,7 +171,7 @@ while (runProgram)
         }
         else
         {
-          Console.WriteLine("Please say yes or no.");
+          Console.WriteLine("Please select either yes or no.");
         }
       }
 

@@ -153,7 +153,7 @@ namespace Library
                     }
                     else
                     {
-                        Console.WriteLine("invalid inpu");
+                        Console.WriteLine("invalid input");
                     }
                 }
                 
@@ -166,7 +166,7 @@ namespace Library
             }
             allUsers[indexUser].CheckedOutBooks = returnValue;
             
-            //Mike^
+
         }
 
 
@@ -178,7 +178,7 @@ namespace Library
         book.Status = false;
         book.Due = Books.GetDueDate(DateTime.Now);
       }
-      //Mike^
+
     }
   }
 }

@@ -25,11 +25,12 @@ namespace Library
         //Methods
         public static string newUserName()
         {
-            Console.WriteLine("Enjoy your first visit! What is your name?");
+            Console.WriteLine("I hope you're enjoying your first visit!\nWhat is your name?");
             while (true)
             {
                 string name = Console.ReadLine().Trim();
-                Console.WriteLine($"Are you happy with {name} for your username?");
+        Console.Clear();
+                Console.WriteLine($"Are you happy with {name} as your username? Type yes to confrim or no to enter a new one.");
                
                 while (true)
                 {
@@ -57,7 +58,8 @@ namespace Library
             int i = 0;
             while (true)
             {
-                Console.WriteLine("Please enter your username");
+        Console.Clear();
+                Console.WriteLine("Welcome back. Please enter your username");
                 string result = Console.ReadLine().Trim();
 
                 if (UserList.Any(x=>x.UserName == result))
@@ -85,7 +87,7 @@ namespace Library
         public static string newPassword()
         {
             bool pass = true;
-            Console.WriteLine("Create your password.\n\tA password should be a combination of letters and numbers.\nYour password is case-sensitive and must be at least 10 characters long and cannot start with a space.");
+            Console.WriteLine("Create your password.\nA password can be a combination of letters and numbers.\nYour password is case-sensitive and must be at least 3 characters long and cannot start with a space.");
 
             while (true)
             {
@@ -101,22 +103,38 @@ namespace Library
                     }
                     password += key.KeyChar;
                 }
-                if (password.Length < 3)
+                if (password.Length < 3 || password.StartsWith(" "))
                 {
-                    Console.WriteLine($"Passwords must be 3 characters or longer and not begin with a space please try again.");
+                    Console.WriteLine($"Passwords must be 3 characters or longer, cannot begin with a space, and must now be typed with blood of your first born child on your fingers.\nPlease try again.");
                 }
                 else
                 {
                     while (pass)
                     {
-                        Console.WriteLine($"You have entered {password} for your password. Is that correct?\nType \"Y\" to confirm your password or type \"N\" to enter a new password.");
+                        Console.WriteLine($"You have entered {password} for your password. Is that correct?\nType \"Yes\" to confirm your password or type \"No\" to enter a new password.");
                         string choice = Console.ReadLine().Trim().ToLower();
-                        if (choice == "y")
+                        if (choice == "yes")
                         {
-                            Console.WriteLine("Fantastic.\nRemember here at the Mouseion, we will never ask you for your account password.  We may ask for your account number, but never for your password.\nIf you receive an email that appears to be from MouseionIOH.edu and asks you for your account, it is not from us, so do not respond,\n and contact our support team to let us know at CampusLibrary.MIOH.edu.\nOur organizations carry sensitive information such as a donor’s contact information and address. We have security measures installed that keep your information\nprivate and accessible only by your volunteers.");
-                            return password;
+              Console.WriteLine("Remember, here at the Mouseion Institute of History, we will never ask you for your account password. Our staff may ask\nfor your username or email address, " +
+"but never for your password.\n\nIf you receive an email that appears to be from CampusLibrary@MIOH.edu asking for your account password, it is not from us, so\nplease do not respond " +
+"and contact our team, to let us know at CampusLibrary@MIOH.edu. so we can protect others.\n\nOur organization keeps sensitive user information such as a user’s contact information " +
+"and address. We are also the\nlargest unarchived repository of information in all of Western Civilization, possibly the world. While we do have\nsecurity measures installed that keep that " +
+"information safe, once again our content library IS NOT archived and\nour works are not found elsewhere in the world.\n\nThe survival of our libraries content is detrimental to the surivial " +
+"of the human race as a whole, so please do share\nany personal information with outside parties so we can prevent any breaches.\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+              Console.WriteLine("Once you have finished reading the above, please press any key to continue.");
+              Console.ReadKey();
+              Console.Clear();
+              Console.WriteLine("Fantastic." +
+                "\n\nPlease be aware, any breach of the system due to user negligence, will constitute an act of unspeakable treason\nagainst the world carried out by that user. This act is punishable" +
+                " by means of torture and other unimaginably horrific,\nbut yet still morally just punishments. There will be no mercy." +
+                "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+              Console.WriteLine("Once you have finished reading the above and acknowleged you understand, please press any key to continue.");
+              Console.ReadKey();
+              Console.Clear();
+              return password;
                         }
-                        else if (choice == "n")
+                        else if (choice == "no")
                         {
                             pass = true;
 
