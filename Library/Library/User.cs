@@ -30,19 +30,26 @@ namespace Library
             {
                 string name = Console.ReadLine().Trim();
                 Console.WriteLine($"Are you happy with {name} for your username?");
-               string result = Console.ReadLine().ToLower().Trim();
-                if(result == "yes")
+               
+                while (true)
                 {
-                    Console.WriteLine($"Welcome {name}!");
-                    return name;
-                }else if(result == "no")
-                {
-                    Console.WriteLine("Please enter your preferred username.");
+                    string result = Console.ReadLine().ToLower().Trim();
+                    if (result == "yes")
+                    {
+                        Console.WriteLine($"Welcome {name}!");
+                        return name;
+                    }
+                    else if (result == "no")
+                    {
+                        Console.WriteLine("Please enter your preferred username.");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please type yes or no.");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Please type yes or no.");
-                }
+                
             }
         }
         public static string returningUser(List<User> UserList)

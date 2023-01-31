@@ -15,9 +15,9 @@ bool runProgram = true;
 
 List<Books> Cart = new List<Books>();
 
-
+List<Books> Available = listBooks.Where(B => B.Status == true).ToList();
 Console.WriteLine($"\n\nWelcome to the Campus Library of the Mouseion Institute of History, my name is {Books.PickName()} and I will be your \nlibrarian today. Currently, " +
-  $"we have {listBooks.Count} books available to check out.");
+  $"we have {Available.Count} books available to check out.");
 
 Console.WriteLine("Are you a new or returning user?");
 string newUserName = "";
@@ -125,7 +125,7 @@ while (runProgram)
   }
   else if (menuChoice == 4)
   {
-    Console.Clear();
+    
     int x = SwitchMethod.NumberFinder(listBooks);
 
     Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", listBooks[x].Title, listBooks[x].Author, listBooks[x].Category, listBooks[x].IsAvailable()));
@@ -145,7 +145,7 @@ while (runProgram)
   }
   else if (menuChoice == 6)//returnbooks
   {
-    
+        Console.Clear();
     SwitchMethod.ReturnBookM(User.ReturnUserBooks(listBooks,userList,userIndex),userList,userIndex);
     //Mike^
   }
