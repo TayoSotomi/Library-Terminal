@@ -14,17 +14,21 @@ bool filler = true;
 bool runProgram = true;
 string Libraraian = Books.PickName();
 List<Books> Cart = new List<Books>();
-
+//A list to capture only books that are available
 List<Books> Available = listBooks.Where(B => B.Status == true).ToList();
 Console.WriteLine($"Welcome to the Campus Library of the Mouseion Institute of History, my name is {Libraraian} and I will be your \nlibrarian today. Currently, " +
   $"we have {listBooks.Count} books available to check out.\n");
 
 Console.WriteLine("Are you a new or returning user?");
+//assigning variables
 string newUserName = "";
 string newPassword = "";
 int userIndex = 0;
+
+//main line of code for user
 while (true)
 {
+    //Takes user input from line 23 and runs a IF statement
     string answer = Console.ReadLine().Trim().ToLower();
 
     if (answer == "new")
@@ -65,14 +69,14 @@ while (true)
     }
 }
 
-
+//main code for Books
 while (runProgram)
 {
 
   int i = 1;
   foreach (Books book in listBooks)
   {
-    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable()));
+    Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{i}. {book.Title}", book.Author, book.Category, book.IsAvailable(), book.Due));
     i++;
   }
   Console.WriteLine("Please choose from one of the follow.\n\n" +
@@ -97,9 +101,7 @@ while (runProgram)
       Console.Clear();
       Console.WriteLine(String.Format("{0,-50}{1,20}{2,15}{3,15}", $"{book.Title}", book.Author, book.Category, book.IsAvailable()));
       Cart = SwitchMethod.SelectedBooks(Cart, book);
-
-      //  Selection = listBooks.Where(book => book.Equals(selected)).ToList();
-      //Console.WriteLine(SwitchMethod.SelectedBooks(Selection));
+                 
     }
   }
   else if (menuChoice == 2)
